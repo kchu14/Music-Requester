@@ -4,41 +4,56 @@ import spotipy
 import spotipy.util as util
 import os
 import pprint
+import time
 
-SPOTIPY_CLIENT_ID = os.environ["SPOTIPY_CLIENT_ID"]
-SPOTIPY_CLIENT_SECRET = os.environ["SPOTIPY_CLIENT_SECRET"]
-SPOTIPY_REDIRECT_URI = os.environ["SPOTIPY_REDIRECT_URI"]
 
-# if len(sys.argv) > 3:
-#     username = sys.argv[1]
-#     playlist_id = sys.argv[2]
-#     track_ids = sys.argv[3:]
-# else:
-#     print("Usage: %s username playlist_id track_id ..." % (sys.argv[0],))
-#     sys.exit()
+class SpotifyController:
+    def __init__(self):
+        SPOTIPY_CLIENT_ID = os.environ["SPOTIPY_CLIENT_ID"]
+        SPOTIPY_CLIENT_SECRET = os.environ["SPOTIPY_CLIENT_SECRET"]
+        SPOTIPY_REDIRECT_URI = os.environ["SPOTIPY_REDIRECT_URI"]
+        # TODO make env variable
+        self.username = "kchu6666"
+        self.playlist_id = "5cfr6TeXBbtaad1ZeqGSOd"
+        scope = "playlist-modify-public"
 
-username = "kchu6666"
-scope = "playlist-modify-public"
-token = util.prompt_for_user_token(
-    username, scope, SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, "http://127.0.0.1"
-)
-playlist_id = "5cfr6TeXBbtaad1ZeqGSOd"
-track_ids = ["2GpBrAoCwt48fxjgjlzMd4", "2374M0fQpWi3dLnB54qaLX"]
+        self.token = util.prompt_for_user_token(
+            self.username,
+            scope,
+            SPOTIPY_CLIENT_ID,
+            SPOTIPY_CLIENT_SECRET,
+            "http://127.0.0.1",
+        )
+        self.added_tracks = []
+        if self.token:
+            self.sp = spotipy.Spotify(auth=self.token)
+            self.sp.trace = False
+        else:
+            print("Can't get token for", username)
 
-# https://open.spotify.com/playlist/5cfr6TeXBbtaad1ZeqGSOd
-# https://open.spotify.com/track/6ttsH99vfvkAPF3s1tIPqB
-# util.prompt_for_user_token(username,scope,client_id='5d00a3845e8e4a389229c0bf260c82b7',client_secret='https://localhost:3000',redirect_uri='your-app-redirect-url')
-# https://open.spotify.com/track/6ttsH99vfvkAPF3s1tIPqB
-# https://open.spotify.com/track/2GpBrAoCwt48fxjgjlzMd4
-if token:
-    sp = spotipy.Spotify(auth=token)
-    sp.trace = False
-    # results = sp.user_playlist_add_tracks(username, playlist_id, track_ids)
-    # print(results)
-    # results = sp.start_playback(device_id=None, context_uri=playlist_id, offset=0)
-    # print(results)
-    sp.next_track()
-    search_result = sp.search("Africa", limit=10, offset=0, type="track")
-    pprint.pprint(search_result["tracks"]["items"][0]["id"])
-else:
-    print("Can't get token for", username)
+    def add_track(self, song_title: str):
+        search_result = self.sp.search(song_title, limit=10, offset=0, type="track")
+        song_id = [search_result["tracks"]["items"][0]["id"]]
+        results = self.sp.user_playlist_add_tracks(
+            self.username, self.playlist_id, song_id
+        )
+        self.added_tracks.append(song_id[0])
+        print(results)
+
+    def remove_added(self):
+        results = self.sp.user_playlist_remove_all_occurrences_of_tracks(
+            self.username, self.playlist_id, self.added_tracks, snapshot_id=None
+        )
+
+    def start_playback(self):
+        results = self.sp.start_playback(
+            device_id=None, context_uri=playlist_id, offset=0
+        )
+        print(results)
+        # sp.next_track()
+
+
+if __name__ == "__main__":
+    sc = SpotifyController()
+    sc.add_track("Stop Loving You")
+    # spotify:track:73bzcsDjx9FqzqKWcPLMiH
