@@ -37,8 +37,12 @@ class SpotifyController:
         results = self.sp.user_playlist_add_tracks(
             self.username, self.playlist_id, song_id
         )
+        pprint.pprint(search_result["tracks"]["items"][0])
+        name = search_result["tracks"]["items"][0]["name"]
+        artist = search_result["tracks"]["items"][0]["artists"]["name"]
         self.added_tracks.append(song_id[0])
         print(results)
+        return name, artist
 
     def remove_added(self):
         results = self.sp.user_playlist_remove_all_occurrences_of_tracks(
