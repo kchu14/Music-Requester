@@ -26,8 +26,8 @@ def receive_message():
     # pprint.pprint(data)
     body = data.get("Body")
     resp = MessagingResponse()
-    _parse_message(body)
-    resp.message("Ahoy! Thanks so much for your message.")
+    song_played = _parse_message(body)
+    resp.message(f"Added {song_played} to the queue.")
     return str(resp)
 
 
@@ -36,6 +36,8 @@ def _parse_message(message_body: str):
     if message_body.lower().lstrip().startswith("!add"):
         song_title = message_body.split("!add", 1)[1]
         sc.add_track(song_title)
+        # TODO look at result and return result instead.
+        return song_title
 
 
 if __name__ == "__main__":
