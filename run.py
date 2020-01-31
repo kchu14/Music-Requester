@@ -5,6 +5,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 import logging
 import pprint
 from spotify_controller import SpotifyController
+from exceptions import DuplicateSongError
 import pprint
 
 app = Flask(__name__)
@@ -18,6 +19,8 @@ logging.basicConfig(
     level=logging.DEBUG,
 )
 
+admins = set(["+18609873868"])
+
 
 @app.route("/sms", methods=["GET", "POST"])
 def receive_message():
@@ -26,20 +29,36 @@ def receive_message():
     data = request.form
     # pprint.pprint(data)
     body = data.get("Body")
+    messengers_num = data.get("From")
     resp = MessagingResponse()
-    _execute_command(body, resp)
+
+    _execute_command(body, messengers_num, resp)
 
     return str(resp)
 
 
-def _execute_command(message_body, resp):
+def _execute_command(message_body, messengers_num, resp):
     logging.debug(message_body)
     if message_body.lower().lstrip().startswith("!add"):
         song_title = message_body.split("!add", 1)[1]
-        name, artist = sc.add_track(song_title)
-        # TODO look at result and return result instead.
-        # TODO don't add duplicates
-        resp.message(f"______\n\nAdded {name} by {artist} to the queue.")
+        try:
+            name, artist = sc.add_track(song_title)
+            resp.message(f"______\n\nAdded {name} by {artist} to the queue.")
+        except DuplicateSongError:
+            resp.message(
+                f"______\n\nSong is already in the queue. Didn't add duplicate song."
+            )
+    if message_body.lower().lstrip().startswith("!playlist"):
+        tracks = sc.tracks_in_playlist()
+        resp.message(tracks)
+
+    if (
+        message_body.lower().lstrip().startswith("!remove_added")
+        and messengers_num in admins
+    ):
+        sc.remove_added()
+        resp.message(f"______\n\nRemoved added songs.")
+
     else:
         resp.message(f"______\n\nUnknown command. Commands are !add.")
 

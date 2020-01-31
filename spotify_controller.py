@@ -5,6 +5,7 @@ import spotipy.util as util
 import os
 import pprint
 import time
+from exceptions import DuplicateSongError
 
 
 class SpotifyController:
@@ -24,7 +25,7 @@ class SpotifyController:
             SPOTIPY_CLIENT_SECRET,
             "http://127.0.0.1",
         )
-        self.added_tracks = set()
+        self.added_tracks = []
         self.tracks = set()
         if self.token:
             self.sp = spotipy.Spotify(auth=self.token)
@@ -38,13 +39,13 @@ class SpotifyController:
         search_result = self.sp.search(song_title, limit=10, offset=0, type="track")
         song_id = search_result["tracks"]["items"][0]["id"]
         if song_id in self.tracks:
-            print("duplicate")
+            raise DuplicateSongError
         results = self.sp.user_playlist_add_tracks(
             self.username, self.playlist_id, [song_id]
         )
         name = search_result["tracks"]["items"][0]["name"]
         artist = search_result["tracks"]["items"][0]["artists"][0]["name"]
-        self.added_tracks.add(song_id)
+        self.added_tracks.append(song_id)
         return name, artist
 
     def tracks_in_playlist(self):
@@ -63,11 +64,12 @@ class SpotifyController:
                 "   %d %32.32s %s %s"
                 % (i, track["artists"][0]["name"], track["name"], track["id"])
             )
+            # TODO add song info and artist for display
             self.tracks.add(track["id"])
 
     def remove_added(self):
         results = self.sp.user_playlist_remove_all_occurrences_of_tracks(
-            self.username, self.playlist_id, [self.added_tracks], snapshot_id=None
+            self.username, self.playlist_id, self.added_tracks, snapshot_id=None
         )
 
     def start_playback(self):
@@ -81,5 +83,7 @@ class SpotifyController:
 if __name__ == "__main__":
     sc = SpotifyController()
     sc.add_track("Stop Loving You")
+    sc.tracks_in_playlist()
+    sc.remove_added()
     sc.tracks_in_playlist()
     # spotify:track:73bzcsDjx9FqzqKWcPLMiH
