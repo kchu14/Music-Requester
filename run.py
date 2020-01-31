@@ -27,19 +27,21 @@ def receive_message():
     # pprint.pprint(data)
     body = data.get("Body")
     resp = MessagingResponse()
-    song_played = _parse_message(body)
-    resp.message(f"Added {song_played} to the queue.")
+    _execute_command(body, resp)
+
     return str(resp)
 
 
-def _parse_message(message_body: str):
+def _execute_command(message_body, resp):
     logging.debug(message_body)
     if message_body.lower().lstrip().startswith("!add"):
         song_title = message_body.split("!add", 1)[1]
         name, artist = sc.add_track(song_title)
         # TODO look at result and return result instead.
         # TODO don't add duplicates
-        return name, artist
+        resp.message(f"______\n\nAdded {name} by {artist} to the queue.")
+    else:
+        resp.message(f"______\n\nUnknown command. Commands are !add.")
 
 
 if __name__ == "__main__":

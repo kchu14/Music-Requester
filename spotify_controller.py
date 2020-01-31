@@ -32,18 +32,15 @@ class SpotifyController:
             print("Can't get token for", username)
 
     def add_track(self, song_title: str):
+        # TODO add try catch
         search_result = self.sp.search(song_title, limit=10, offset=0, type="track")
         song_id = [search_result["tracks"]["items"][0]["id"]]
         results = self.sp.user_playlist_add_tracks(
             self.username, self.playlist_id, song_id
         )
-        pprint.pprint(search_result["tracks"]["items"][0])
         name = search_result["tracks"]["items"][0]["name"]
-        print("name", name)
         artist = search_result["tracks"]["items"][0]["artists"][0]["name"]
-        print('artist', artist)
         self.added_tracks.append(song_id[0])
-        print(results)
         return name, artist
 
     def remove_added(self):
