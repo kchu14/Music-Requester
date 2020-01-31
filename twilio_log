@@ -425,3 +425,64 @@
 11:26:05,388 werkzeug INFO  * Restarting with stat
 11:26:06,214 werkzeug WARNING  * Debugger is active!
 11:26:06,225 werkzeug INFO  * Debugger PIN: 233-760-856
+11:47:07,179 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+11:47:07,302 werkzeug INFO  * Restarting with stat
+11:52:12,530 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+11:52:12,532 werkzeug INFO  * Restarting with stat
+11:52:12,924 werkzeug WARNING  * Debugger is active!
+11:52:12,940 werkzeug INFO  * Debugger PIN: 233-760-856
+11:52:30,381 root DEBUG !add africa
+11:52:30,415 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.spotify.com:443
+11:52:30,641 urllib3.connectionpool DEBUG https://api.spotify.com:443 "GET /v1/search?q=+africa&limit=10&offset=0&type=track HTTP/1.1" 200 None
+11:52:30,738 urllib3.connectionpool DEBUG https://api.spotify.com:443 "POST /v1/users/kchu6666/playlists/5cfr6TeXBbtaad1ZeqGSOd/tracks HTTP/1.1" 201 None
+11:52:30,744 werkzeug INFO 127.0.0.1 - - [31/Jan/2020 11:52:30] "POST /sms HTTP/1.1" 200 -
+11:52:58,145 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/run.py', reloading
+11:52:58,195 werkzeug INFO  * Restarting with stat
+11:52:59,375 werkzeug WARNING  * Debugger is active!
+11:52:59,396 werkzeug INFO  * Debugger PIN: 233-760-856
+12:22:58,4 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:22:58,115 werkzeug INFO  * Restarting with stat
+12:22:58,824 werkzeug WARNING  * Debugger is active!
+12:22:58,858 werkzeug INFO  * Debugger PIN: 233-760-856
+12:23:09,192 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:23:09,273 werkzeug INFO  * Restarting with stat
+12:23:09,958 werkzeug WARNING  * Debugger is active!
+12:23:09,965 werkzeug INFO  * Debugger PIN: 233-760-856
+12:23:21,270 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:23:21,322 werkzeug INFO  * Restarting with stat
+12:23:21,925 werkzeug WARNING  * Debugger is active!
+12:23:21,945 werkzeug INFO  * Debugger PIN: 233-760-856
+12:23:24,32 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:23:24,75 werkzeug INFO  * Restarting with stat
+12:23:24,603 werkzeug WARNING  * Debugger is active!
+12:23:24,610 werkzeug INFO  * Debugger PIN: 233-760-856
+12:23:27,693 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:23:27,773 werkzeug INFO  * Restarting with stat
+12:23:28,995 werkzeug WARNING  * Debugger is active!
+12:23:29,3 werkzeug INFO  * Debugger PIN: 233-760-856
+12:33:49,225 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:33:49,304 werkzeug INFO  * Restarting with stat
+12:33:50,800 werkzeug WARNING  * Debugger is active!
+12:33:50,857 werkzeug INFO  * Debugger PIN: 233-760-856
+12:33:51,967 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:33:52,31 werkzeug INFO  * Restarting with stat
+12:33:53,156 werkzeug WARNING  * Debugger is active!
+12:33:53,183 werkzeug INFO  * Debugger PIN: 233-760-856
+12:33:55,342 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:33:55,449 werkzeug INFO  * Restarting with stat
+12:33:56,536 werkzeug WARNING  * Debugger is active!
+12:33:56,550 werkzeug INFO  * Debugger PIN: 233-760-856
+12:34:11,963 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:34:12,4 werkzeug INFO  * Restarting with stat
+12:34:12,899 werkzeug WARNING  * Debugger is active!
+12:34:12,911 werkzeug INFO  * Debugger PIN: 233-760-856
+12:34:13,974 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:34:14,30 werkzeug INFO  * Restarting with stat
+12:34:14,434 werkzeug WARNING  * Debugger is active!
+12:34:14,471 werkzeug INFO  * Debugger PIN: 233-760-856
+12:35:05,776 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:35:05,829 werkzeug INFO  * Restarting with stat
+12:35:06,908 werkzeug WARNING  * Debugger is active!
+12:35:06,927 werkzeug INFO  * Debugger PIN: 233-760-856
+12:38:50,211 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/spotify_controller.py', reloading
+12:38:50,298 werkzeug INFO  * Restarting with stat

@@ -11,7 +11,7 @@ class SpotifyController:
     def __init__(self):
         SPOTIPY_CLIENT_ID = os.environ["SPOTIPY_CLIENT_ID"]
         SPOTIPY_CLIENT_SECRET = os.environ["SPOTIPY_CLIENT_SECRET"]
-        SPOTIPY_REDIRECT_URI = os.environ["SPOTIPY_REDIRECT_URI"]
+        # SPOTIPY_REDIRECT_URI = os.environ["SPOTIPY_REDIRECT_URI"]
         # TODO make env variable
         self.username = "kchu6666"
         self.playlist_id = "5cfr6TeXBbtaad1ZeqGSOd"
@@ -24,7 +24,8 @@ class SpotifyController:
             SPOTIPY_CLIENT_SECRET,
             "http://127.0.0.1",
         )
-        self.added_tracks = []
+        self.added_tracks = set()
+        self.tracks = set()
         if self.token:
             self.sp = spotipy.Spotify(auth=self.token)
             self.sp.trace = False
@@ -33,19 +34,40 @@ class SpotifyController:
 
     def add_track(self, song_title: str):
         # TODO add try catch
+        self.tracks_in_playlist()
         search_result = self.sp.search(song_title, limit=10, offset=0, type="track")
-        song_id = [search_result["tracks"]["items"][0]["id"]]
+        song_id = search_result["tracks"]["items"][0]["id"]
+        if song_id in self.tracks:
+            print("duplicate")
         results = self.sp.user_playlist_add_tracks(
-            self.username, self.playlist_id, song_id
+            self.username, self.playlist_id, [song_id]
         )
         name = search_result["tracks"]["items"][0]["name"]
         artist = search_result["tracks"]["items"][0]["artists"][0]["name"]
-        self.added_tracks.append(song_id[0])
+        self.added_tracks.add(song_id)
         return name, artist
+
+    def tracks_in_playlist(self):
+        results = self.sp.playlist(self.playlist_id, fields="tracks,next")
+        tracks = results["tracks"]
+
+        self.show_update_tracks(tracks)
+        while tracks["next"]:
+            tracks = sp.next(tracks)
+            self.show_update_tracks(tracks)
+
+    def show_update_tracks(self, tracks):
+        for i, item in enumerate(tracks["items"]):
+            track = item["track"]
+            print(
+                "   %d %32.32s %s %s"
+                % (i, track["artists"][0]["name"], track["name"], track["id"])
+            )
+            self.tracks.add(track["id"])
 
     def remove_added(self):
         results = self.sp.user_playlist_remove_all_occurrences_of_tracks(
-            self.username, self.playlist_id, self.added_tracks, snapshot_id=None
+            self.username, self.playlist_id, [self.added_tracks], snapshot_id=None
         )
 
     def start_playback(self):
@@ -59,4 +81,5 @@ class SpotifyController:
 if __name__ == "__main__":
     sc = SpotifyController()
     sc.add_track("Stop Loving You")
+    sc.tracks_in_playlist()
     # spotify:track:73bzcsDjx9FqzqKWcPLMiH
