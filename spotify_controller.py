@@ -39,7 +39,9 @@ class SpotifyController:
         )
         pprint.pprint(search_result["tracks"]["items"][0])
         name = search_result["tracks"]["items"][0]["name"]
-        artist = search_result["tracks"]["items"][0]["artists"]["name"]
+        print("name", name)
+        artist = search_result["tracks"]["items"][0]["artists"][0]["name"]
+        print('artist', artist)
         self.added_tracks.append(song_id[0])
         print(results)
         return name, artist

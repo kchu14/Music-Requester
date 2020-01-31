@@ -5,6 +5,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 import logging
 import pprint
 from spotify_controller import SpotifyController
+import pprint
 
 app = Flask(__name__)
 sc = SpotifyController()
@@ -35,9 +36,10 @@ def _parse_message(message_body: str):
     logging.debug(message_body)
     if message_body.lower().lstrip().startswith("!add"):
         song_title = message_body.split("!add", 1)[1]
-        sc.add_track(song_title)
+        name, artist = sc.add_track(song_title)
         # TODO look at result and return result instead.
-        return song_title
+        # TODO don't add duplicates
+        return name, artist
 
 
 if __name__ == "__main__":
