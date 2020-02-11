@@ -6,7 +6,8 @@ import logging
 import pprint
 from spotify_controller import SpotifyController
 from exceptions import DuplicateSongError
-import pprint
+
+blank_space = "______\n\n"
 
 app = Flask(__name__)
 sc = SpotifyController()
@@ -43,10 +44,10 @@ def _execute_command(message_body, messengers_num, resp):
         song_title = message_body.split("!add", 1)[1]
         try:
             name, artist = sc.add_track(song_title)
-            resp.message(f"______\n\nAdded {name} by {artist} to the queue.")
+            resp.message(f"{blank_space}Added {name} by {artist} to the queue.")
         except DuplicateSongError:
             resp.message(
-                f"______\n\nSong is already in the queue. Didn't add duplicate song."
+                f"{blank_space}Song is already in the queue. Didn't add duplicate song."
             )
     if message_body.lower().lstrip().startswith("!playlist"):
         tracks = sc.tracks_in_playlist()
@@ -57,10 +58,10 @@ def _execute_command(message_body, messengers_num, resp):
         and messengers_num in admins
     ):
         sc.remove_added()
-        resp.message(f"______\n\nRemoved added songs.")
+        resp.message(f"{blank_space}Removed added songs.")
 
     else:
-        resp.message(f"______\n\nUnknown command. Commands are !add.")
+        resp.message(f"{blank_space}Unknown command. Commands are !add.")
 
 
 if __name__ == "__main__":
