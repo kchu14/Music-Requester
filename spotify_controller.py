@@ -14,8 +14,8 @@ class SpotifyController:
         SPOTIPY_CLIENT_SECRET = os.environ["SPOTIPY_CLIENT_SECRET"]
         # SPOTIPY_REDIRECT_URI = os.environ["SPOTIPY_REDIRECT_URI"]
         # TODO make env variable
-        self.username = "kchu6666"
-        self.playlist_id = "5cfr6TeXBbtaad1ZeqGSOd"
+        self.username = "1298423856"
+        self.playlist_id = "2CbUu1gLjkiPb1OnEvfvt8"
         scope = "playlist-modify-public"
 
         self.token = util.prompt_for_user_token(
@@ -84,6 +84,6 @@ if __name__ == "__main__":
     sc = SpotifyController()
     sc.add_track("Stop Loving You")
     sc.tracks_in_playlist()
-    sc.remove_added()
+    # sc.remove_added()
     sc.tracks_in_playlist()
     # spotify:track:73bzcsDjx9FqzqKWcPLMiH
