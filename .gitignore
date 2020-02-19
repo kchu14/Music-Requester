@@ -11,3 +11,4 @@ __pycache__/spotify_controller.cpython-37.pyc
 /.cache-kchu6666
 /.cache-1298423856
 /twilio_log
+/send_sms.py
