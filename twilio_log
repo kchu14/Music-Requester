@@ -664,3 +664,53 @@
 13:20:27,986 werkzeug INFO  * Debugger PIN: 233-760-856
 13:22:21,119 werkzeug INFO  * Detected change in '/Users/kchu/CS Projects/Music-Requester/run.py', reloading
 13:22:21,169 werkzeug INFO  * Restarting with stat
+13:14:41,628 werkzeug INFO  * Restarting with stat
+13:14:42,364 werkzeug WARNING  * Debugger is active!
+13:14:42,370 werkzeug INFO  * Debugger PIN: 100-941-470
+13:14:42,378 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:14:51,317 werkzeug INFO 127.0.0.1 - - [15/Feb/2020 13:14:51] "GET / HTTP/1.1" 404 -
+13:14:51,475 werkzeug INFO 127.0.0.1 - - [15/Feb/2020 13:14:51] "GET /favicon.ico HTTP/1.1" 404 -
+13:15:03,197 werkzeug INFO 127.0.0.1 - - [15/Feb/2020 13:15:03] "GET / HTTP/1.1" 404 -
+13:15:03,345 werkzeug INFO 127.0.0.1 - - [15/Feb/2020 13:15:03] "GET /favicon.ico HTTP/1.1" 404 -
+13:15:19,811 werkzeug INFO  * Restarting with stat
+13:15:20,490 werkzeug WARNING  * Debugger is active!
+13:15:20,495 werkzeug INFO  * Debugger PIN: 100-941-470
+13:15:20,502 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:15:56,54 werkzeug INFO  * Detected change in 'C:\\Users\\kchu1\\Desktop\\CS Projects\\Music-Requester\\spotify_controller.py', reloading
+13:15:56,108 werkzeug INFO  * Restarting with stat
+13:15:56,897 werkzeug WARNING  * Debugger is active!
+13:15:56,902 werkzeug INFO  * Debugger PIN: 100-941-470
+13:15:56,910 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:16:02,499 werkzeug INFO  * Detected change in 'C:\\Users\\kchu1\\Desktop\\CS Projects\\Music-Requester\\spotify_controller.py', reloading
+13:16:02,550 werkzeug INFO  * Restarting with stat
+13:16:03,255 werkzeug WARNING  * Debugger is active!
+13:16:03,260 werkzeug INFO  * Debugger PIN: 100-941-470
+13:16:03,268 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:16:06,608 werkzeug INFO  * Detected change in 'C:\\Users\\kchu1\\Desktop\\CS Projects\\Music-Requester\\spotify_controller.py', reloading
+13:16:06,669 werkzeug INFO  * Restarting with stat
+13:16:07,521 werkzeug WARNING  * Debugger is active!
+13:16:07,527 werkzeug INFO  * Debugger PIN: 100-941-470
+13:16:07,535 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:16:12,982 werkzeug INFO  * Restarting with stat
+13:16:13,715 werkzeug WARNING  * Debugger is active!
+13:16:13,720 werkzeug INFO  * Debugger PIN: 100-941-470
+13:16:13,728 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:16:32,562 werkzeug INFO  * Detected change in 'C:\\Users\\kchu1\\Desktop\\CS Projects\\Music-Requester\\spotify_controller.py', reloading
+13:16:32,614 werkzeug INFO  * Restarting with stat
+13:16:42,270 werkzeug WARNING  * Debugger is active!
+13:16:42,275 werkzeug INFO  * Debugger PIN: 100-941-470
+13:16:42,280 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:17:05,313 werkzeug INFO  * Restarting with stat
+13:17:06,76 werkzeug WARNING  * Debugger is active!
+13:17:06,81 werkzeug INFO  * Debugger PIN: 100-941-470
+13:17:06,89 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:19:38,231 werkzeug INFO  * Restarting with stat
+13:19:38,913 werkzeug WARNING  * Debugger is active!
+13:19:38,918 werkzeug INFO  * Debugger PIN: 100-941-470
+13:19:38,925 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+13:22:05,153 root DEBUG !add Africa
+13:22:05,166 urllib3.connectionpool DEBUG Starting new HTTPS connection (1): api.spotify.com:443
+13:22:05,330 urllib3.connectionpool DEBUG https://api.spotify.com:443 "GET /v1/playlists/2CbUu1gLjkiPb1OnEvfvt8?fields=tracks%2Cnext HTTP/1.1" 200 None
+13:22:05,411 urllib3.connectionpool DEBUG https://api.spotify.com:443 "GET /v1/search?q=+Africa&limit=10&offset=0&type=track HTTP/1.1" 200 None
+13:22:05,494 urllib3.connectionpool DEBUG https://api.spotify.com:443 "POST /v1/users/1298423856/playlists/2CbUu1gLjkiPb1OnEvfvt8/tracks HTTP/1.1" 201 None
+13:22:05,499 werkzeug INFO 127.0.0.1 - - [15/Feb/2020 13:22:05] "POST /sms HTTP/1.1" 200 -

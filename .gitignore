@@ -5,3 +5,9 @@ venv/
 /Scripts
 /tcl
 LICENSE.txt
+__pycache__/exceptions.cpython-37.pyc
+__pycache__/spotify_controller.cpython-37.pyc
+/__pycache__
+/.cache-kchu6666
+/.cache-1298423856
+/twilio_log
