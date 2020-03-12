@@ -22,6 +22,9 @@ logging.basicConfig(
 
 admins = set(["+18609873868"])
 
+@app.route('/')
+def swag():
+    return 'swaggggg'
 
 @app.route("/sms", methods=["GET", "POST"])
 def receive_message():
@@ -65,4 +68,4 @@ def _execute_command(message_body, messengers_num, resp):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0', port=5000)
